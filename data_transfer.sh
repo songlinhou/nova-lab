@@ -35,20 +35,20 @@ then
     exit 1
 fi
 
-IS_WIN=0 # check if this script is on windows
+IS_WIN=1 # check if this script is on windows
 
 ## check if it is on windows
-if [[ "$OSTYPE" == "msys"* ]]
-then
-    # using gitbash
-    IS_WIN=1
-elif [[ "$OSTYPE" == "cygwin"* ]]
-then
-    # emulation on windows
-    IS_WIN=1
-else
-    IS_WIN=0
-fi
+# if [[ "$OSTYPE" == "msys"* ]]
+# then
+#     # using gitbash
+#     IS_WIN=1
+# elif [[ "$OSTYPE" == "cygwin"* ]]
+# then
+#     # emulation on windows
+#     IS_WIN=1
+# else
+#     IS_WIN=0
+# fi
 
 echo "###################################################"
 echo "Data Transfer (You can update info in store folder)"
