@@ -173,7 +173,8 @@ class TransferWindow(npyscreen.ActionForm, npyscreen.FormWithMenus):
         # self.mode_selector.add_handlers(new_handlers)
 
         self.server_path_button.add_handlers({
-            curses.ascii.CR: self.on_change_remote_dest
+            curses.ascii.CR: self.on_change_remote_dest,
+            curses.ascii.NL: self.on_change_remote_dest
         })
 
         # self.files = self.add(npyscreen.Autocomplete, name="files", values=["1","2","3","4"])
