@@ -1,9 +1,9 @@
 import paramiko
 import os
 
-sftpURL   =  '10.249.108.181'
-sftpUser  =  'cyc'
-sftpPass  =  'cycpass'
+sftpURL   =  None
+sftpUser  =  None
+sftpPass  =  None
 sftpKey = None
 local_path = None
 
@@ -68,10 +68,10 @@ def get_folder_contents(ftp):
     for i in contents:
         lstatout=str(ftp.lstat(i)).split()[0]
         if 'd' in lstatout: 
-            print(i,'is a directory')
+            # print(i,'is a directory')
             folders.append(i)
         else:
-            print(i,'is a file')
+            # print(i,'is a file')
             files.append(i)
     return folders, files
 
@@ -82,10 +82,10 @@ def get_local_contents():
     files = []
     for f in fs:
         if os.path.isdir(os.path.join(path,f)):
-            print(f, "is folder")
+            # print(f, "is folder")
             dirs.append(f)
         elif os.path.isfile(os.path.join(path,f)):
-            print(f, "is file")
+            # print(f, "is file")
             files.append(f)
     return dirs, files
 
