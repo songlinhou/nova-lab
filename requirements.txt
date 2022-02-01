@@ -1,0 +1,4 @@
+paramiko==2.9.2
+typer==0.4.0
+npyscreen==4.10.5
+windows-curses==2.2.0
