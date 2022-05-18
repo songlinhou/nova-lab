@@ -1,7 +1,5 @@
 FROM nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04
 # this is for pwat score 
-RUN RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC
-
 RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificates \
     libglib2.0-0 libxext6 libsm6 libxrender1 \
     git mercurial subversion
@@ -51,4 +49,4 @@ RUN pip uninstall -y opencv-python-headless && \
     pip install opencv-python-headless==4.5.1.48
 RUN mkdir src
 WORKDIR /src
-CMD ["python3"]
+CMD ["bash"]

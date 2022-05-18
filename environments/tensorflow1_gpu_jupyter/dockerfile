@@ -19,10 +19,7 @@ RUN apt-get -y install default-jre
 RUN pip install requests tabulate six future colorama
 
 # H2o
-RUN pip install h2o==3.26.0.3
-
-# Pandas
-RUN pip install pandas==0.23.4
+RUN pip install h2o==3.26.0.3 pandas==0.23.4
 
 # XGBoost
 RUN apt-get update --fix-missing && \
@@ -48,6 +45,18 @@ RUN pip install --ignore-installed certifi --no-cache-dir -r requirements.txt &&
     pip uninstall -y opencv-python-headless && \
     pip install opencv-python-headless==4.5.1.48
 
+# nodejs is required for jupyter lab
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash && \
+    apt-get -y install nodejs && \
+    jupyter lab clean && jupyter lab build && \
+    npm install -g localtunnel
+
+COPY localtunnel.service /etc/systemd/system/
+    
 RUN mkdir src
 WORKDIR /src
-CMD ["python3"]
+
+COPY run_notebook.sh /
+COPY run_lab.sh /
+
+CMD ["bash"]
