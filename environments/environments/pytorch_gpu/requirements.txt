@@ -1,0 +1,13 @@
+matplotlib==3.3.2
+#pydensecrf==1.0rc3
+numpy==1.19.2
+Pillow==7.2.0
+torch==1.7.0
+torchvision==0.8.1
+Flask==1.1.2
+jsonpickle==1.4.1
+opencv-python==4.5.1.48
+albumentations==0.4.6
+h5py==2.10.0
+pretrainedmodels==0.7.4
+requests==2.25.1
