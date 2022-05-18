@@ -1,1 +1,0 @@
-jupyter lab --port 8888 --ip 0.0.0.0 --NotebookApp.token='' --NotebookApp.password='' --no-browser --allow-root > /dev/null & lt --port 8888
