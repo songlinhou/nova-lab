@@ -2,7 +2,7 @@
 USER_NAME=$(whoami)
 source ../docker_permission_fix.sh
 CONTAINER_NAME="java_jupyter:$USER_NAME"
-
+mkdir -p container_names
 echo "Jupyter Notebook with R Language Image Builder"
 
 echo "Input the name of container"

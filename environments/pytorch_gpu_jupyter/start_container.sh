@@ -16,7 +16,7 @@ echo "##### Interactive Session #####"
 echo "5) Session without GPU"
 echo "6) Session with GPU"
 
-
+echo ">> Input your choice:"
 read CHOICE
 
 # RUN_JUPYTER_CMD="jupyter notebook password  && jupyter notebook --port 8888 --ip 0.0.0.0 --no-browser --allow-root"
