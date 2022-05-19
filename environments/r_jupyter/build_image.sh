@@ -1,9 +1,9 @@
 #!/bin/bash
 USER_NAME=$(whoami)
 source ../docker_permission_fix.sh
-CONTAINER_NAME="pytorch_gpu:$USER_NAME"
+CONTAINER_NAME="r_jupyter:$USER_NAME"
 
-echo "Jupyter Notebook with Pytorch Image Builder"
+echo "Jupyter Notebook with R Language Image Builder"
 
 echo "Input the name of container"
 read CONTAINER_NAME_PREFIX

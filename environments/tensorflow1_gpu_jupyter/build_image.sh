@@ -1,5 +1,6 @@
 #!/bin/bash
 USER_NAME=$(whoami)
+source ../docker_permission_fix.sh
 CONTAINER_NAME="tensorflow_1_gpu:$USER_NAME"
 
 echo "Jupyter Notebook with Tensorflow 1 Image Builder"

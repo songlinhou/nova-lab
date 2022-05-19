@@ -1,0 +1,45 @@
+###############################################
+# Java Notebook (Ray Hou)
+# Recommended Usage:
+# 1) Build and Start Env
+# docker build -f dockerfile -t java_jupyter:dev .
+# docker rm -f java_notebook && docker run -it -p 8811:8888 -v ~:/home/jovyan/work --name java_notebook java_jupyter:dev
+# 2) Open in browser
+# http://localhost:8811/lab
+###############################################
+
+FROM jupyter/minimal-notebook
+
+LABEL maintainer="Ray Hou <songlinhou1993@gmail.com>"
+
+USER root
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+  software-properties-common \
+  curl
+
+# Install Zulu OpenJdk 11 (LTS)
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9 \
+  && apt-add-repository 'deb http://repos.azulsystems.com/ubuntu stable main' \
+  && apt install -y zulu-11
+
+# Unpack and install the kernel
+RUN curl -L https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava-1.3.0.zip > ijava-kernel.zip
+RUN unzip ijava-kernel.zip -d ijava-kernel \
+  && cd ijava-kernel \
+  && python3 install.py --sys-prefix
+
+# Install jupyter RISE extension.
+RUN pip install jupyter_contrib-nbextensions RISE \
+  && jupyter-nbextension install rise --py --system \
+  && jupyter-nbextension enable rise --py --system \
+  && jupyter contrib nbextension install --system \
+  && jupyter nbextension enable hide_input/main
+
+# Cleanup
+RUN rm ijava-kernel.zip
+
+WORKDIR /home/jovyan/work
+
+CMD jupyter lab --ip 0.0.0.0 --allow-root --no-browser --port 8888 --NotebookApp.token='' --NotebookApp.password=''

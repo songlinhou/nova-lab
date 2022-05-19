@@ -1,6 +1,6 @@
 #!/bin/bash
 USER_NAME=$(whoami)
-
+source ../docker_permission_fix.sh
 CONTAINER_NAME_PREFIX=$(cat "container_names/$USER_NAME")
 CONTAINER_NAME="$CONTAINER_NAME_PREFIX:$USER_NAME"
 echo "Container Name: $CONTAINER_NAME"
