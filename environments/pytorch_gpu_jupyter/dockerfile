@@ -38,6 +38,8 @@ RUN apt-get install -y wget libssl-dev && \
 RUN pip install --upgrade pip && \
     conda uninstall -y numpy && \
     pip uninstall opencv-python
+    
+RUN conda install pytorch==1.11.0 torchvision==0.12.0 torchaudio==0.11.0 cudatoolkit=11.3 -c pytorch
 
 COPY requirements.txt .
 RUN pip install --ignore-installed certifi --no-cache-dir -r requirements.txt && \
