@@ -10,3 +10,5 @@ opencv-python==4.5.1.48
 albumentations==0.4.6
 h5py==2.10.0
 pretrainedmodels==0.7.4
+pandas
+tensorboard
