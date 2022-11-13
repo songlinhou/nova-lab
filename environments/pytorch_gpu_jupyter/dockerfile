@@ -41,8 +41,6 @@ RUN pip install --upgrade pip && \
     
 # RUN conda install pytorch==1.11.0 torchvision==0.12.0 torchaudio==0.11.0 cudatoolkit=11.3 -c pytorch
 
-RUN pip3 install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 -f https://download.pytorch.org/whl/torch_stable.html
-
 COPY requirements.txt .
 RUN pip install --ignore-installed certifi --no-cache-dir -r requirements.txt && \
     pip install -U scipy && \
@@ -57,6 +55,9 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash && \
 
 RUN mkdir src
 WORKDIR /src
+
+# make sure the correct torch is installed
+RUN pip3 install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 -f https://download.pytorch.org/whl/torch_stable.html
 
 COPY run_notebook.sh /
 COPY run_lab.sh /
